@@ -64,6 +64,10 @@ pnpm --filter @workspace/kickshift-storefront run build
 
 The storefront static build is written to `artifacts/kickshift-storefront/dist/public`.
 
+## Storefront image performance
+
+Product and gallery artwork is served as compressed WebP, with offscreen images loaded lazily and the first hero image prioritized. The original PNG artwork remains available in `public/`; the customization masks stay PNG for their CSS mask usage.
+
 ## Repository layout
 
 | Path | Purpose |

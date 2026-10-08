@@ -270,6 +270,7 @@ export function HomeMotion<T extends MotionProduct>({
                   alt={`${heroProduct.name} sneaker in ${heroProduct.colorway}`}
                   productId={heroProduct.id}
                   imageClassName="ks-hero-img"
+                  priority
                 />
               </span>
             </motion.div>

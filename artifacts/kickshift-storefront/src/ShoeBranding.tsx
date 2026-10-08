@@ -151,6 +151,7 @@ export function ShoePhoto({
   view = "front",
   className = "",
   imageClassName = "",
+  priority = false,
 }: {
   src: string;
   alt: string;
@@ -158,10 +159,18 @@ export function ShoePhoto({
   view?: ShoeView;
   className?: string;
   imageClassName?: string;
+  priority?: boolean;
 }) {
   return (
     <span className={`ks-shoe-photo ${className}`.trim()}>
-      <img className={`ks-shoe-photo-source ${imageClassName}`.trim()} src={src} alt={alt} />
+      <img
+        className={`ks-shoe-photo-source ${imageClassName}`.trim()}
+        src={src}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding="async"
+      />
       <ShoeEngravingMark productId={productId} view={view} />
     </span>
   );

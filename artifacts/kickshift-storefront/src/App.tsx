@@ -39,17 +39,17 @@ type Product = {
 type CartItem = { id: string; productId: string; size: string; quantity: number; custom?: CustomConfig };
 type CustomConfig = { upper: string; sole: string; lace: string; accent: string; initials: string };
 
-const HERO_IMAGE = "/kickshift-hero.png";
+const HERO_IMAGE = "/kickshift-hero.webp";
 const productImageSets: Record<string, string[]> = {
-  "velocity-01": ["/kickshift-hero.png", "/angles/kickshift-hero-side-profile-cutout.png"],
-  "courtline-01": ["/kickshift-courtline.png", "/angles/kickshift-courtline-side-profile-cutout.png"],
-  "afterdark-01": ["/kickshift-afterdark.png", "/angles/kickshift-afterdark-side-profile-cutout.png"],
-  "flux-03": ["/kickshift-flux.png", "/angles/kickshift-flux-side-profile-cutout.png"],
-  "monolith-01": ["/kickshift-monolith-01.png", "/angles/kickshift-monolith-01-side-profile-cutout.png"],
-  "vector-01": ["/kickshift-vector-01.png", "/angles/kickshift-vector-01-side-profile-cutout.png"],
-  "solaris-01": ["/kickshift-solaris-01.png", "/angles/kickshift-solaris-01-side-profile-cutout.png"],
-  "frost-100": ["/kickshift-frost-100.png"],
-  "ivy-70": ["/kickshift-ivy-70.png"],
+  "velocity-01": ["/kickshift-hero.webp", "/angles/kickshift-hero-side-profile-cutout.webp"],
+  "courtline-01": ["/kickshift-courtline.webp", "/angles/kickshift-courtline-side-profile-cutout.webp"],
+  "afterdark-01": ["/kickshift-afterdark.webp", "/angles/kickshift-afterdark-side-profile-cutout.webp"],
+  "flux-03": ["/kickshift-flux.webp", "/angles/kickshift-flux-side-profile-cutout.webp"],
+  "monolith-01": ["/kickshift-monolith-01.webp", "/angles/kickshift-monolith-01-side-profile-cutout.webp"],
+  "vector-01": ["/kickshift-vector-01.webp", "/angles/kickshift-vector-01-side-profile-cutout.webp"],
+  "solaris-01": ["/kickshift-solaris-01.webp", "/angles/kickshift-solaris-01-side-profile-cutout.webp"],
+  "frost-100": ["/kickshift-frost-100.webp"],
+  "ivy-70": ["/kickshift-ivy-70.webp"],
 };
 const productImages: Record<string, string> = Object.fromEntries(
   Object.entries(productImageSets).map(([key, value]) => [key, value[0]])
@@ -434,6 +434,7 @@ function ProductPage({ store }: { store: ReturnType<typeof useStore> }) {
             alt={`${product.name}, ${activeAngle === 0 ? "three-quarter view" : "side profile"} in ${product.colorway}`}
             productId={product.id}
             view={activeAngle === 0 ? "front" : "side"}
+            priority
           />
           {gallery.length > 1 && <div className="ks-gallery-controls">
             <button type="button" onClick={() => changeAngle(-1)} aria-label="Previous shoe angle"><ChevronLeft size={18} /></button>
