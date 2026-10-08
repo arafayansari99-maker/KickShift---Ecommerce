@@ -81,7 +81,7 @@ The storefront source and routes are under `artifacts/kickshift-storefront/src/`
 
 ## Optional API and database workspaces
 
-The workspace also includes an Express API service and PostgreSQL/Drizzle database package. They are separate from the storefront's current local sample-data flow. The API requires a `DATABASE_URL` PostgreSQL connection string; configure it before starting the API or applying database schema changes.
+The workspace also includes an Express API service and PostgreSQL/Drizzle database package. They are separate from the storefront's current local sample-data flow. The API currently exposes a health check; `DATABASE_URL` is only needed when starting code that connects to the database or applying schema changes.
 
 ```sh
 pnpm --filter @workspace/api-server run dev
@@ -89,3 +89,19 @@ pnpm --filter @workspace/db run push
 ```
 
 `push` updates the development database schema. Do not use it against a production database without reviewing the migration impact.
+
+## Vercel multi-service deployment
+
+The root [`vercel.json`](./vercel.json) configures three services in one Vercel project:
+
+| Service | Public path | Purpose |
+| --- | --- | --- |
+| `kickshift-storefront` | `/` (fallback) | Main React storefront |
+| `api-server` | `/api/*` | Express API and health check |
+| `mockup-sandbox` | `/__mockup/*` | Component preview sandbox |
+
+The Vite build and development commands use `scripts/run-vite.mjs` to set each app's required `PORT` and `BASE_PATH` in a Windows- and POSIX-compatible way. The storefront and mockup services each rewrite their internal paths to `index.html` for client-side routing. The API keeps its `/api` prefix, matching the Express mount path.
+
+There are currently no service bindings: the storefront has no server-side calls to the API, and the mockup sandbox is independent. The shared `/api/*` rewrite is public browser routing, not an internal service-to-service call. If backend calls are added later, use a binding on the calling service rather than a hardcoded service URL.
+
+From the repository root, run `vercel dev` to test the configured services together locally.
