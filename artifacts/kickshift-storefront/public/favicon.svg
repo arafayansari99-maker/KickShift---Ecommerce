@@ -1,0 +1,16 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ring" x1="24" y1="26" x2="154" y2="154" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF7A1A"/>
+      <stop offset="1" stop-color="#FF3C00"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="90" cy="90" r="84" fill="#0F172A"/>
+  <circle cx="90" cy="90" r="76" stroke="url(#ring)" stroke-width="8"/>
+
+  <text x="50%" y="59%" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="58" letter-spacing="-8" fill="#F8FAFC">KS</text>
+
+  <path d="M36 124C46 117 58 112 71 112H82" stroke="#FF7A1A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M111 53C120 58 127 67 127 78C127 95 113 108 93 108H84" stroke="#FF7A1A" stroke-width="8" stroke-linecap="round"/>
+</svg>

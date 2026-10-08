@@ -1,0 +1,1 @@
+- [Shoe photo branding](product-photo-branding.md) — the circular KS mark is the only shoe-side brand mark; keep the full wordmark in the header.
